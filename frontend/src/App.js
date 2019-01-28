@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Instructions from './Instructions'
+import Counter from './Counter'
 import Show from './Show'
 
 class App extends Component {
@@ -21,6 +22,7 @@ class App extends Component {
         {this.state.shows.map(x => (
           <Show id={x.id} name={x.name} episodes_seen={x.episodes_seen} />
         ))}
+        <Counter />
       </div>
     )
   }
