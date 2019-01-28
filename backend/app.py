@@ -2,6 +2,7 @@ from typing import Tuple
 
 from flask import Flask, jsonify, request, Response
 import mockdb.mockdb_interface as db
+import json
 
 app = Flask(__name__)
 
@@ -54,9 +55,10 @@ def mirror(name):
 @app.route("/shows", methods=['GET'])
 def get_all_shows():
     shows = db.get('shows')
-    minEpisodes = int(request.args.get('minEpisodes'))
+    minEpisodes = request.args.get('minEpisodes')
     if minEpisodes is None:
         return create_response({"shows": shows})
+    minEpisodes = int(minEpisodes)
 
     filtered_shows = []
     for show in shows:
@@ -81,6 +83,15 @@ def get_show(id):
     if show is None:
         return create_response(status=404, message="No show with this id exists")
     return create_response(show)
+
+@app.route("/shows", methods=['POST'])
+def post_show():
+    new_show = request.json
+    if "name" not in new_show or "episodes_seen" not in new_show:
+        return create_response(status=422, message="Not all parameters specified (name and episodes_seen)")
+
+    db.create('shows', new_show)
+    return create_response(new_show, 201)
 
 """
 ~~~~~~~~~~~~ END API ~~~~~~~~~~~~
