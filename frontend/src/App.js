@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Instructions from './Instructions'
-import Counter from './Counter'
 import Show from './Show'
 
 class App extends Component {
@@ -41,10 +40,7 @@ class App extends Component {
       <div className="App">
         <Instructions complete={true}/>
         {this.state.shows.map(x => (
-          <div>
-            <Show id={x.id} name={x.name} episodes_seen={x.episodes_seen} />
-            <Counter initialCount={x.episodes_seen} />
-          </div>
+          <Show id={x.id} name={x.name} episodes_seen={x.episodes_seen} />
         ))}
         <input 
           type="text"

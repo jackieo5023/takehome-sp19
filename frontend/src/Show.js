@@ -8,6 +8,7 @@ class App extends Component {
     return (
       <div>
         {this.props.name}
+        <Counter initialCount={this.props.episodes_seen} />
       </div>
     )
   }
