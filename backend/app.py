@@ -93,6 +93,19 @@ def post_show():
     db.create('shows', new_show)
     return create_response(new_show, 201)
 
+@app.route("/shows/<id>", methods=['PUT'])
+def put_show(id):
+    int_id = int(id)
+    updated_show = request.json
+    old_show = db.getById('shows', int_id)
+    
+    if old_show is None:
+        return create_response(status=404, message="No show found with that id")
+    print(updated_show)
+    db.updateById('shows', int_id, updated_show)
+    return create_response(db.getById('shows', int_id), 201)
+    
+
 """
 ~~~~~~~~~~~~ END API ~~~~~~~~~~~~
 """
