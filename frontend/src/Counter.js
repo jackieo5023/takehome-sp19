@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 class Counter extends Component {
   // YOUR CODE GOES BELOW
   state = {
-    count: 0
+    count: this.props.initialCount
   }
 
   handleIncrement = () => {
