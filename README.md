@@ -1,5 +1,5 @@
 # The Challenge
-https://github.com/jackieo5023/takehome-sp19
+[![Run on Repl.it](https://repl.it/badge/github/jackieo5023/takehome-sp19)](https://repl.it/github/jackieo5023/takehome-sp19)
 ![Hack4Impact](https://uiuc.hack4impact.org/static/images/colored-logo.png)
 
 This challenge is intended to expose you to some elements of our most common technical stack: a [React](https://reactjs.org/) frontend, and a Flask backend.
